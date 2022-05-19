@@ -1,7 +1,10 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Aplicacion.Models;
-
+using MySql.Data.MySqlClient;
+using MySql.Data;
+using System.Data;
+using ClosedXML.Excel;
 using System;
 using System.IO;
 using System.Text;
@@ -60,19 +63,44 @@ public class UsuarioController : Controller {
     }
 
     public IActionResult Exportar(){
-        //Mostrar Usuarios
-        /*var oListaUsuarios = _UsuarioDatos.allUsuario();
-        return View(oListaUsuarios);
+        DataTable tabla_usuarios = new DataTable();
 
-        for (int i = 0; i &amp;lt; ilength; i++)
-            sbOutput.AppendLine(string.Join(strSeperator, inaOutput[i]));
- 
-        // Create and write the csv file
-        File.WriteAllText(strFilePath, sbOutput.ToString());
- 
-        // To append more lines to the csv file
-        File.AppendAllText(strFilePath, sbOutput.ToString());
-        }*/
+        var con = new Conexion();
+        using (var conexion = new MySqlConnection(con.getCadenaMySQL())){
+            conexion.Open();
+            using (var adapter = new MySqlDataAdapter()) {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conexion;
+                cmd.CommandText = 
+                 "SELECT "
+                +"  usuarios.Login, "
+                +"  usuarios.Nombre, " 
+                +"  usuarios.Paterno, " 
+                +"  usuarios.Materno, " 
+                +"  empleados.Sueldo, " 
+                +"  date_format(empleados.FechaIngreso, '%d-%m-%Y') AS FechaIngreso " 
+                +"FROM usuarios "
+                +"LEFT JOIN empleados "
+                +"ON empleados.Usuario = usuarios.Login";
+                adapter.SelectCommand = cmd;
+
+                adapter.Fill(tabla_usuarios);
+            }
+        }
+
+       using( var libro = new XLWorkbook()){
+           tabla_usuarios.TableName = "Usuarios";
+           var hoja = libro.Worksheets.Add(tabla_usuarios);
+           hoja.ColumnsUsed().AdjustToContents();
+
+           using(var memoria = new MemoryStream()){
+               libro.SaveAs(memoria);
+
+               var nombreExcel = string.Concat("Reporte Usuario", DateTime.Now.ToString(),".xlsx");
+
+               return File(memoria.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", nombreExcel);
+           }
+       }
     }
 
 

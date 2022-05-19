@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/programador/Microsoft/TestDevBackJr/main/Prueba_2/Aplicacion/Aplicacion.csproj": {}
+    "/home/programador/Microsoft/TestDevBackJr-1/Prueba_2/Aplicacion/Aplicacion.csproj": {}
   },
   "projects": {
-    "/home/programador/Microsoft/TestDevBackJr/main/Prueba_2/Aplicacion/Aplicacion.csproj": {
+    "/home/programador/Microsoft/TestDevBackJr-1/Prueba_2/Aplicacion/Aplicacion.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/programador/Microsoft/TestDevBackJr/main/Prueba_2/Aplicacion/Aplicacion.csproj",
+        "projectUniqueName": "/home/programador/Microsoft/TestDevBackJr-1/Prueba_2/Aplicacion/Aplicacion.csproj",
         "projectName": "Aplicacion",
-        "projectPath": "/home/programador/Microsoft/TestDevBackJr/main/Prueba_2/Aplicacion/Aplicacion.csproj",
+        "projectPath": "/home/programador/Microsoft/TestDevBackJr-1/Prueba_2/Aplicacion/Aplicacion.csproj",
         "packagesPath": "/home/programador/.nuget/packages/",
-        "outputPath": "/home/programador/Microsoft/TestDevBackJr/main/Prueba_2/Aplicacion/obj/",
+        "outputPath": "/home/programador/Microsoft/TestDevBackJr-1/Prueba_2/Aplicacion/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/programador/.nuget/NuGet/NuGet.Config"
@@ -38,6 +38,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "ClosedXML": {
+              "target": "Package",
+              "version": "[0.95.4, )"
+            },
             "CsvHelper": {
               "target": "Package",
               "version": "[27.2.1, )"
@@ -49,6 +53,10 @@
             "MySql.Data": {
               "target": "Package",
               "version": "[8.0.29, )"
+            },
+            "System.Data.DataSetExtensions": {
+              "target": "Package",
+              "version": "[4.5.0, )"
             }
           },
           "imports": [
