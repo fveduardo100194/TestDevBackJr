@@ -1,0 +1,40 @@
+@model List<UsuarioEmpleadoModel>
+@{
+    ViewData["Title"] = "Listar Usuarios";
+}
+
+<div class="card">
+    <h5 class="card-header">Listar Usuario</h5>
+    <div class="card-body">
+        <a asp-action="Guardar" asp-controller="Usuario" class="btn btn-success">Crear Nuevo</a>
+        <hr>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Usuario</th>
+                    <th>Nombre</th>
+                    <th>Paterno</th>
+                    <th>Materno</th>
+                    <th>Sueldo</th>
+                    <th>Fecha Ingreso</th>
+                    <th>Accion</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model){
+                    <tr>
+                        <th>@item.Login</th>
+                        <th>@item.Nombre</th>
+                        <th>@item.Paterno</th>
+                        <th>@item.Materno</th>
+                        <th>@item.Sueldo</th>
+                        <th>@item.FechaIngreso</th>
+                        <th>
+                           <a asp-action="Editar" asp-controller="Usuario" class="btn btn-primary btn-sm" asp-route-Usuario="@item.Login">Editar</a>
+                        </th>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

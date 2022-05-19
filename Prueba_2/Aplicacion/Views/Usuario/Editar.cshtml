@@ -1,0 +1,48 @@
+@model UsuarioEmpleadoModel;
+@{
+    ViewData["Title"] = "Editar Usuarios";
+}
+
+<div class="card">
+    <h5 class="card-header">Editar Usuario</h5>
+    <div class="card-body">
+        <form asp-action="Editar" asp-controller="Usuario" method="post">
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input asp-for="Nombre" type="text" class="form-control">
+                    <span asp-validation-for="Nombre" class="text-danger"></span>
+                </div>
+                <div class="col-md-4">
+                    <label for="paterno" class="form-label">Paterno</label>
+                    <input asp-for="Paterno" type="text" class="form-control">
+                    <span asp-validation-for="Paterno" class="text-danger"></span>
+                </div>
+                <div class="col-md-4">
+                    <label for="materno" class="form-label">Materno</label>
+                    <input asp-for="Materno" type="text" class="form-control">
+                    <span asp-validation-for="Materno" class="text-danger"></span>
+                </div>
+                <div class="col-md-4">
+                    <label for="login" class="form-label">Login</label>
+                    <input asp-for="Login" type="text" class="form-control" readonly>
+                    <span asp-validation-for="Login" class="text-danger"></span>
+                </div>
+                <div class="col-md-4">
+                    <label for="sueldo" class="form-label">Sueldo</label>
+                    <input asp-for="Sueldo" type="number" step="any" class="form-control">
+                    <span asp-validation-for="Sueldo" class="text-danger"></span>
+                </div>
+                <div class="col-md-4">
+                    <label for="fecha" class="form-label">Fecha Ingreso</label>
+                    <input asp-for="FechaIngreso" type="date" class="form-control">
+                    <span asp-validation-for="FechaIngreso" class="text-danger"></span>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Editar</button>
+                    <a asp-action="Listar" asp-controller="Usuario" class="btn btn-warning">Volver a lista de usuario</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
