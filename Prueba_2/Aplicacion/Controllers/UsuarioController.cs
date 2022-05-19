@@ -61,7 +61,7 @@ public class UsuarioController : Controller {
 
     public IActionResult Exportar(){
         //Mostrar Usuarios
-        var oListaUsuarios = _UsuarioDatos.allUsuario();
+        /*var oListaUsuarios = _UsuarioDatos.allUsuario();
         return View(oListaUsuarios);
 
         for (int i = 0; i &amp;lt; ilength; i++)
@@ -72,7 +72,7 @@ public class UsuarioController : Controller {
  
         // To append more lines to the csv file
         File.AppendAllText(strFilePath, sbOutput.ToString());
-        }
+        }*/
     }
 
 
